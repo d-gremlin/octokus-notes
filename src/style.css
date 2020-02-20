@@ -1,23 +1,33 @@
 p.code {
-    color: FireBrick;
-    }
-    
-    p.object {
-    color: Lime;
-    }
-    
-    p.action {
-    color: Aqua	;
-    }
-    
-    p.property {
-    color: Gold;
-    }
-    
-    p.link {
-    color: DeepPink ;
-    }
-    
-    p.smth {
-    color: DarkMagenta;
-    }
+color: FireBrick;
+}
+
+p.object {
+color: Lime;
+}
+
+p.action {
+color: Aqua	;
+}
+
+p.property {
+color: Gold;
+}
+
+p.link {
+color: DeepPink ;
+}
+
+p.smth {
+color: DarkMagenta;
+}
+
+button.del {
+color: rgb(255, 0, 234);
+background-color: rgb(208, 255, 0);
+}
+
+body{
+background-image: url(ss.jpg);
+background-size: cover;
+}
