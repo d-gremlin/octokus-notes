@@ -23,10 +23,12 @@ function myFunc(){
         case '/':
           currentType = 'link';
           break;
-        default:
+        default:{
           currentType = 'smth';
+          currentText = arr[i];
+        }
     }
-      currentText = arr[i];
+
     list.push({ /* вносим текст и тип текста в массив list */
           text: currentText,
           type: currentType
