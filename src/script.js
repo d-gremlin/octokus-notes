@@ -1,12 +1,16 @@
-function myFunc(){
-  let str = document.getElementById('spisok').value; //получаем текст из окна ввода
-  
-  let arr = str.split('\n'); /* разделяем строку построчно, как бы это ни звучало */
-  let list=[];
+let list=[];
+
+function distribution(str){
+  let arr = str.split('\n'); //разделяем строку построчно
+
+  list=[];
+
   for (let i = 0; i < arr.length; i++) { 
-    let currentText = arr[i].substring(1) , /* полученная с помощью substring подстрока с текстом */
-      currentMarker = arr[i].substring(0,1); /* полученная с помощью substring подстрока с маркером */
-      if (currentMarker=='' || currentMarker==' ') {continue} /* убираем пустые строки */
+    let currentText = arr[i].substring(1) , //полученная с помощью substring подстрока с текстом
+      currentMarker = arr[i].substring(0,1); //полученная с помощью substring подстрока с маркером
+      
+    if (currentMarker=='') {continue} //убираем пустые строки
+
     switch(currentMarker) { //по маркеру присваиваем тип
         case '>':
           currentType = 'code';
@@ -26,35 +30,150 @@ function myFunc(){
         default:{
           currentType = 'smth';
           currentText = arr[i];
+          currentMarker = '';
         }
     }
+    
+    /*Если вводить один из типовых символов или пробел(несколько пробелов) будет пустая строка, надо пофиксить!!!!
+    !!!!!
+    !!!!!!
+    !!!!!!!
+*/
 
-    list.push({ /* вносим текст и тип текста в массив list */
+    list.push({ //вносим текст и тип текста в массив list
           text: currentText,
-          type: currentType
+          type: currentType,
+          marker: currentMarker
       })
+
   }
+  return list;
+}
+
+function myFunc(){
+  let str = document.getElementById('list').value; //получаем текст из окна ввода
+  list = distribution(str); //разделяем этот текст на массив
+  createDiv(list,'list'); //вставляем элементы в body
+}
+
+function createDiv(list,idnode){
+
   for (let i = 0; i < list.length; i++ ){ 
-    let rng = Math.random().toString().substr(2) //создаем случайный id и отбрасываем 0. и получается целое число
-    let newElem = document.createElement('p'); /* создаем абзац */
-    newElem.className = list[i].type; /* присваиваем абзацу тип */
-    let newButton = document.createElement('button'); //создаем кнопку для удаления
-    newButton.addEventListener( "click" , () => delEl(rng)); //по клику срабатывает функция delEl
-    newButton.className = 'del'; //даем кнопке class del
-    newButton.innerHTML = 'удалить текст над кнопкой'; //вставляем текст в нашу кнопку
+    
+    let newElem = document.createElement('p'); // создаем абзац 
+    let delButton = document.createElement('button'); //создаем кнопку для удаления
+    let changeButton = document.createElement('button'); //создаем кнопку для изменения
+
+    let rng = Math.random().toString().substr(2); //создаем случайный id и отбрасываем 0. и получается целое число
+
+    newElem.className = list[i].type; // присваиваем абзацу тип
     newElem.innerHTML = list[i].text; //вставляем текст в newElem
-    let newDiv = document.createElement('div') //создаем dic, в котором будет текст и кнопка, чтобы потом его удалить
+
+    delButton.addEventListener( "click" , () => deleteElement(rng)); //по клику срабатывает функция deleteElement
+    delButton.className = 'del'; //даем кнопке class del
+    delButton.innerHTML = 'удалить текст'; //вставляем текст в нашу кнопку
+
+    changeButton.addEventListener( "click" , () => changeString(rng));
+    changeButton.className = 'change';
+    changeButton.innerHTML = 'изменить текст';
+
+    let newDiv = document.createElement('div'); //создаем div, в котором будет текст и кнопка, чтобы потом его удалить
     newDiv.id = rng; //выдаем айдишник диву
     newDiv.appendChild(newElem); //запихиваем в див текст
-    newDiv.appendChild(newButton); //и кнопку
-    document.body.appendChild(newDiv); //див запихиваем в body
-  }
-  document.getElementById('spisok').value =''; //очищаем окно ввода
-  }
-document.myFunc = myFunc; //это для того, чтобы функция работала на localhost и может еще где-нибудь
+    newDiv.appendChild(delButton); //и кнопку
+    newDiv.appendChild(changeButton); //и еще лодну
+    newDiv.className = 'part'; 
 
-function delEl(delId){ //создаем функцию для удаления по кнопке
-  let element = document.getElementById(delId); //получаем наш div по id
+
+    if (idnode == 'list') { //это будет работать, если мы вводим новые данные
+      document.body.appendChild(newDiv); //див запихиваем в body
+    } 
+
+    else {
+      let oldDiv = document.getElementById(idnode); //это будет работать, если мы меняем уже имеющиеся данные
+      oldDiv.before(newDiv); //вставляем новый элемент перед старым
+    }
+
+  }
+
+  document.getElementById('list').value =''; //очищаем окно ввода
+  }
+document.createDiv = createDiv; //это для того, чтобы функция работала на localhost и может еще где-нибудь
+
+function deleteElement(deleteId){ //создаем функцию для удаления по кнопке
+  let element = document.getElementById(deleteId); //получаем наш div по id
   element.remove(); //удаляем div
 }
-document.delEl = delEl;
+
+
+
+
+function changeString(changeId) {
+  let chan = document.getElementById(changeId); //находим div с которым будем работать
+
+  chnageP = chan.querySelector('p'); //находим элемент p c текстом, который надо изменить
+  changeButton = chan.querySelectorAll('button')[1]; // находим кнопку изменения
+
+  switch(chnageP.className) { //узнаем какой маркер был перед текстом раньше
+    case 'code':
+      currentMarker = '>';
+      break;
+    case 'object':
+      currentMarker = '*';
+      break;
+    case 'action':
+      currentMarker = '+';
+      break;
+    case 'property':
+      currentMarker = '-';
+      break;
+    case 'link':
+      currentMarker = '/';
+      break;
+    default:{
+      currentMarker = '';
+    }
+}
+
+  let newArea = document.createElement('textarea'); //создаем окно ввода
+  newArea.innerHTML = currentMarker + chnageP.innerHTML; //в окно ввода вставляем маркер и текст
+  newArea.className = 'changeArea'; 
+  chnageP.replaceWith(newArea); //заменяем текст на окно ввода с маркером и этим текстом
+
+  let acceptButton = document.createElement('button'); //создаем кнопку 'изменить'
+  acceptButton.className = 'del';
+  acceptButton.innerHTML = 'принять изменения';
+  acceptButton.addEventListener( "click" , () => acceptChanges(changeId)); //onclick = функция
+  changeButton.replaceWith(acceptButton); //заменям кнопку изменить на принять изменения
+  
+}
+
+
+function acceptChanges(changeId) { 
+  let chan = document.getElementById(changeId); //находим div с которым будем работать
+  
+  changeArea = chan.querySelector('textarea'); //находим окно ввода(изменения)
+  arr = changeArea.value; //arr - текст в окне ввода
+  list = distribution(arr) //разбиваем текст в окне на массив
+
+  createDiv(list,changeId); //вставляем новые divы перед нашим дивом(чтоб они были в правильном порядке)
+
+  chan.remove(); //удаляем наш div
+}
+
+
+function deleteAll(){
+  let allElements = document.querySelectorAll('div.part'); //находим все div с part
+  for(let i = 0;i < allElements.length; i++) //удаляем их
+  allElements[i].remove();
+}
+
+
+
+document.deleteElement = deleteElement;
+document.distribution = distribution;
+document.acceptChanges = acceptChanges;
+document.changeString = changeString;
+document.createDiv = createDiv;
+document.myFunc = myFunc;
+document.deleteAll = deleteAll;
