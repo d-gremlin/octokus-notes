@@ -34,11 +34,12 @@ function distribution(str){
         }
     }
     
-    /*Если вводить один из типовых символов или пробел(несколько пробелов) будет пустая строка, надо пофиксить!!!!
-    !!!!!
-    !!!!!!
-    !!!!!!!
-*/
+    let counter = 0;
+    for (k = 0; k < currentText.length; k++){
+      if (currentText[k] != ' ') {break;}            //удаляем строки, состоящие из пробелов
+      else {counter++;}
+    }
+    if (counter == currentText.length) {continue}
 
     list.push({ //вносим текст и тип текста в массив list
           text: currentText,
