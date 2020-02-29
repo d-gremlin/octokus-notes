@@ -1,1 +1,23 @@
-
+p.code {
+  color: FireBrick;
+  }
+  
+  p.object {
+  color: Lime;
+  }
+  
+  p.action {
+  color: Aqua	;
+  }
+  
+  p.property {
+  color: Gold;
+  }
+  
+  p.link {
+  color: DeepPink ;
+  }
+  
+  p.smth {
+  color: DarkMagenta;
+  }
