@@ -2,8 +2,6 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Записная книжка</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,11 +9,8 @@
     <script src="script.js"></script>
     <h2>Записная книжка</h2>
     <a href="./Vocabulary.html">Плюшкин словарь по Git</a>
-    <p title="Введите текст">
-        <form method="post" target="_self">
-        <p><textarea rows="10" cols="45" name="text"></textarea></p>
-        <p><input type="submit" value="Записать" />></p>
-        </form>
-    </p>
+    <textarea id="list"></textarea><br>
+    <button type="button" onClick="myFunc();"  class="input">Записать данные</button>
+    <button type="button" onClick="deleteAll();" class="delete">УДАЛИТЬ ВСЁ</button>
 </body>
 </html>
