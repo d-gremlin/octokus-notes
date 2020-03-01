@@ -2,6 +2,12 @@ h2 {
     color: #741B47;
 }
 
+a {color: #741B47;
+}
+
+ul {color: #741B47;
+}
+
 p.code {
   color: FireBrick;
   }
@@ -23,17 +29,17 @@ p.code {
   }
   
   p.smth {
-  color: DarkMagenta;
+  color: #741B47;
   }
 
   button.del, button.change, button.input, button.delete {
-    color: rgb(255, 0, 234);
+    color: rgb(116, 27, 71);
     background-color: rgb(208, 255, 0);
     margin-right: 10px;
     
     }
     
     body{
-    //background-image: url(ss.jpg);
+    /*background-image: url(ss.jpg);*/
     background-size: cover;
     }
