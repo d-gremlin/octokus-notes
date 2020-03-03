@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/d-gremlin/octokus-notes/issues"
   },
-  "homepage": "https://github.com/d-gremlin/octokus-notes#readme"
+  "homepage": "https://github.com/d-gremlin/octokus-notes#readme",
+  "devDependencies": {
+    "marked": "^0.8.0",
+    "parcel-plugin-txt": "^1.0.3"
+  }
 }
