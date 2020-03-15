@@ -4,51 +4,38 @@
     <meta charset="UTF-8">
     <title>Записная книжка</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="C:/Users/Plushka/OCTOKUS/octokus-notes/src/images/list-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="C:/Users/Plushka/OCTOKUS/octokus-notes/src/images/list-16x16.png">
-    <style>
-        body { 
-            margin-top: 40px;
-            margin-left: 30px;
-            margin-bottom:  30px;
-            margin-right: 30px;
-            background: black;
-            color: #741B47; 
-            padding: 30px;
-        }
-        ul.hr {
-            margin: 0px;
-            padding: 0px;
-        }
-        ul.hr li {
-            display: inline;
-            margin-right:0px;
-            border: 1px solid rgb(255, 255, 255);
-            padding: 3px;
-        }
-        h2 {
-            padding: 10px; 
-        }
-        textarea {
-            padding: 20px; 
-        }
-    </style>
 </head>
 <body>
-    <div>
-        <ul class="hr">
+    <script src="script.js"></script>
+    <div class="Line"></div>
+    <div class="Header_OCTOKUS-NOTES">
+        <h1>OCTOKUS-NOTES</h1>
+        <img src="C:/Users/Plushka/OCTOKUS/octokus-notes/src/images/list-32x32.png">
+        <form action="https://github.com/d-gremlin/octokus-notes" target="_blank"><button>GitHub</button></form>
+    </div>    
+    <div class="Top_buttons">
+        <ul class="Menu-main">
             <li><a href="./Vocabulary.html" target="_blank">Плюшкин словарь по Git</a></li>
             <li><a href="https://www.htmlcsscolor.com" target="_blank">Цвета CSS</a></li>
             <li><a href="https://www.exlab.net/files/tools/sheets/css/css.png" target="_blank">Шпаргалка CSS</a></li>
             <li><a href="http://htmlbook.ru/" target="_blank">Книга HTML</a></li>
         </ul>
     </div>
-    <div>
-        <script src="script.js"></script>
-        <h2>Записная книжка</h2>
-        <p title="Введите текст"><textarea id="list"></textarea></p><br>
-        <button type="button" onClick="myFunc();"  class="input">Записать данные</button>
-        <button type="button" onClick="deleteAll();" class="delete">УДАЛИТЬ ВСЁ</button>
+    <div class="Textarea_buttons">
+        <p title="Введите текст"><textarea id="list"></textarea></p>
+        <button class="shadow-btn" onClick="myFunc();">
+            <span class="btn-inner">
+                <span class="text">Записать данные</span>
+            </span>
+            <span class="shadow"></span>
+        </button>
+        <button class="shadow-btn" onClick="deleteAll();">
+            <span class="btn-inner">
+                <span class="text">УДАЛИТЬ ВСЁ</span>
+            </span>
+            <span class="shadow"></span>
+        </button>
     </div>
 </body>
 </html>

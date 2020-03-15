@@ -1,41 +1,177 @@
-h2 {
-    color: #741B47;
+body {
+    background: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%) no-repeat;
+    height: 100vh;
 }
 
-a {color: #741B47;
+.Line {
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    left: 0px;
+    top: 70px;
+    border: 1px solid #1B163E;
 }
 
-ul {color: #741B47;
+.Header_OCTOKUS-NOTES {
+    position: absolute;
+    width: 500px;
+    height: 18px;
+    left: 261px;
+    top: 19px;
+  
+    font-family: 'Gill Sans', sans-serif;
+    color: #221B4E;
+    font-style: normal;
+    font-weight: 600;
+    font-variant: normal;
+    font-stretch: expanded;
+    font-size: 16px;
+    line-height: 18px;
 }
 
-p.code {
-  color: FireBrick;
-  }
-  
-  p.object {
-  color: Lime;
-  }
-  
-  p.action {
-  color: Aqua	;
-  }
-  
-  p.property {
-  color: Gold;
-  }
-  
-  p.link {
-  color: DeepPink ;
-  }
-  
-  p.smth {
-  color: #741B47;
-  }
+.Header_OCTOKUS-NOTES img {
+    position: absolute;
+    border-radius: 100px; /* Радиус скругления */
+    width: 32px;
+    height: 32px;
+    top: 14px;
+    left: -40px;
+}
 
-  button.del, button.change, button.input, button.delete {
-    color: rgb(116, 27, 71);
-    background-color: rgb(208, 255, 0);
-    margin-right: 10px;
-    
-  }
-  
+.Header_OCTOKUS-NOTES button {
+    position: absolute;
+    width: 75px; 
+    height: 26px;
+    left: 1192px;
+    top: 19px;
+
+    font-family: 'Gill Sans', sans-serif;
+    color: #221B4E;
+    font-style: normal;
+    font-weight: 600;
+    font-variant: normal;
+    font-stretch: expanded;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.Menu-main {
+    list-style: none;
+    margin: 55px 0 5px; /* Движение всей менюшки вверх-вниз*/
+    padding: 25px 0 5px; /* Дополнительное движение менюшки вверх-вниз*/
+    text-align: center;
+}
+
+.Menu-main li {display: inline-block;}
+.Menu-main li:after {
+  content: "|";
+  color: #2A2262;
+  display: inline-block;
+  vertical-align:top;
+}
+
+.Menu-main li:last-child:after {content: none;}
+.Menu-main a {
+  text-decoration: none;
+  font-family: 'Gill Sans', sans-serif;
+  letter-spacing: 2px;
+  position: relative;
+  padding-bottom: 20px;
+  margin: 0 34px 0 30px;
+  font-size: 18px;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: color .2s;
+}
+
+.Menu-main a, .Menu-main a:visited {color: #2A2262;}
+.Menu-main a.current, .Menu-main a:hover{color: #6654F1;}
+.Menu-main a:before,
+.Menu-main a:after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  top: auto;
+  right: 50%;
+  bottom: -5px;
+  left: 50%;
+  background: #6654F1;
+  transition: .8s;
+}
+
+.Menu-main a:hover:before, .Menu-main .current:before {left: 0;}
+.Menu-main a:hover:after, .Menu-main .current:after {right: 0;}   
+@media (max-width: 550px) {
+.Menu-main {padding-top: 0;}
+.Menu-main li {display: block;}
+.Menu-main li:after {content: none;}
+.Menu-main a {
+  padding: 25px 0 20px; 
+  margin: 0 30px;
+}
+}
+
+.button {
+    color: red;
+    position: absolute;
+    left: 261px;
+    top: 210px;
+
+    font-family: "Gill Sans", sans-serif; /*Семейство шрифтов*/
+    font-style: normal; /*Начертание шрифта*/
+    font-weight: 600; /*Насыщенность шрифта*/
+    font-variant: normal; /*межстрочный интервал*/
+    font-stretch: expanded; /*Ширина шрифта*/
+    font-size: 14px; /*Размер шрифта*/
+    line-height: 1; /*Межстрочный интервал*/  
+}
+
+.shadow-btn {	
+	position: relative;
+	padding: 15px 40px;
+	margin: 0 20px;
+	background: #fff9ef;
+	font-family: 'Montserrat Alternates', sans-serif;
+	color: #A64D79;
+	text-transform: none;
+	border: 2px solid #2A2262;	    
+	font-size: 14px;
+	font-weight: 600;
+	outline: none;
+	cursor: pointer;
+}
+.btn-inner {
+	display: flex;
+	align-items: center;
+}
+.text {   
+	line-height: 1;
+	transform: translateX(0px);
+	transition: .3s cubic-bezier(.86,0,.07,1);
+}
+.btn-inner i {
+	margin-left: 5px;
+	font-size: 14px;
+	transition: transform .3s cubic-bezier(.86,0,.07,1), opacity .3s;
+}
+.shadow  {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    width: 100%;
+    height: 100%;
+    background: #98dfd7;
+    z-index: -1;
+    transition: .3s ease;   
+    transform: translate3d(0,0,0);
+}
+.shadow-btn:hover .text {
+	transform:translateX(8px);
+}
+.shadow-btn:hover i {
+	transform: translateX(100%);
+	opacity: 0;
+}
+.shadow-btn:hover .shadow {
+	transform: translate3d(3px,3px,0);
+}
