@@ -29,6 +29,7 @@ body {
     line-height: 18px;
 }
 
+<<<<<<< HEAD
 .Header_OCTOKUS-NOTES img {
     position: absolute;
     border-radius: 100px; /* Радиус скругления */
@@ -175,3 +176,40 @@ body {
 .shadow-btn:hover .shadow {
 	transform: translate3d(3px,3px,0);
 }
+=======
+p.code {
+  color: FireBrick;
+  }
+  
+  p.object {
+  color: Lime;
+  }
+  
+  p.action {
+  color: Aqua	;
+  }
+  
+  p.property {
+  color: Gold;
+  }
+  
+  p.link {
+  color: DeepPink ;
+  }
+  
+  p.smth {
+  color: #741B47;
+  }
+
+  button.del, button.change, button.input, button.delete {
+    color: rgb(116, 27, 71);
+    background-color: rgb(208, 255, 0);
+    margin-right: 10px;
+    
+    }
+    
+    body{
+    /*background-image: url(ss.jpg);*/
+    background-size: cover;
+    }
+>>>>>>> 25af2856940d6c768ba2a8e8a91b0d603154ad7f
